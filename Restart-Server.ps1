@@ -5,7 +5,7 @@
                 ValueFromPipeline=$true,
                 ValueFromPipelineByPropertyName =$true,
                 HelpMessage="Computer name to query via WMI") ]
-    [string ]$computerName= ""
+    [string[]]$computerName= ""
   )
   PROCESS {
     $cred = Get-Credential
