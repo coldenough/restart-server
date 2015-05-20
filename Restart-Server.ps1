@@ -1,20 +1,22 @@
 ﻿function restart-server {
   [CmdletBinding() ]
   param (
-    [parameter (ValueFromPipeline=$true,
-    ValueFromPipelineByPropertyName =$true) ]
-    [string ]$computer= ""
+    [parameter (Mandatory=$true,
+                ValueFromPipeline=$true,
+                ValueFromPipelineByPropertyName =$true,
+                HelpMessage="Computer name to query via WMI") ]
+    [string ]$computerName= ""
   )
   PROCESS {
     $cred = Get-Credential
-    $comp = Get-WmiObject Win32_OperatingSystem -ComputerName $computer 
+    $comp = Get-WmiObject Win32_OperatingSystem -ComputerName $computerName 
                                                 -Credential $cred
     $ret = $comp. Reboot()
     if ($ret.ReturnValue -eq 0){
-      Write-Host "Restarting $computer succeeded."
+      Write-Host "Restarting $computerName succeeded."
     }
     else {
-      Write-Host "Restarting $computer failed"
+      Write-Host "Restarting $computerName failed"
     }
   }
 } 
