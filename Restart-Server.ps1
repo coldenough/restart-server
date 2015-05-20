@@ -1,4 +1,5 @@
-﻿function restart-server {
+﻿# Comment
+function restart-server {
   [CmdletBinding() ]
   param (
     [parameter (Mandatory=$true,
