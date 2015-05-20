@@ -21,3 +21,5 @@ function restart-server {
     }
   }
 } 
+
+Restart-Server
