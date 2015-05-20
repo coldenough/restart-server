@@ -1,7 +1,7 @@
 ﻿function restart-server {
   [CmdletBinding() ]
   param (
-    [parameter (ValueFromPipeline=$true ,
+    [parameter (ValueFromPipeline=$true,
     ValueFromPipelineByPropertyName =$true) ]
     [string ]$computer= ""
   )
