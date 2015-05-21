@@ -85,5 +85,5 @@ Param($roleName)
 if (Test-Isinrole -roleName "Administrator") {
   Restart-Server -computerName nimbletest,pull01,noname -Verbose
 } else {
-  Write-Warning 'Only Administrators may run the script'
+  Write-Warning 'Only Administrators may run the script!'
 }
