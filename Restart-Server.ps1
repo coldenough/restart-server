@@ -2,6 +2,7 @@
 v.1.0
 #>
 $ErrorLogPreference = 'c:\Restart-Server-Log.txt'
+Write-Verbose "$ErrorLogPreference file created"
 
 function restart-server {
   [CmdletBinding()]
@@ -36,4 +37,4 @@ function restart-server {
   END{}
 } 
 
-Restart-Server -computerName nimbletest,pull01
+Restart-Server -computerName nimbletest,pull01 -Verbose
