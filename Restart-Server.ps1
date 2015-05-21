@@ -10,7 +10,7 @@ function restart-server {
   )
   PROCESS {
     $cred = Get-Credential
-    $comp = Get-WmiObject Win32_OperatingSystem -ComputerName $computerName 
+    $comp = Get-WmiObject Win32_OperatingSystem -ComputerName $computerName `
                                                 -Credential $cred
     $ret = $comp. Reboot()
     if ($ret.ReturnValue -eq 0){
