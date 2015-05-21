@@ -2,7 +2,9 @@
 v.1.0
 #>
 $ErrorLogPreference = 'c:\temp\Restart-Server-Log.txt'
-New-Item -Path $ErrorLogPreference -ItemType file -Verbose -ErrorAction SilentlyContinue
+New-Item -Path $ErrorLogPreference -ItemType file `
+                                   -Verbose `
+                                   -ErrorAction SilentlyContinue
 
 if (Test-Path $ErrorLogPreference) {
   Clear-Content $ErrorLogPreference
