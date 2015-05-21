@@ -34,7 +34,7 @@ function restart-server {
   PROCESS {
     foreach ($computer in $computerName) {
       if (Test-Connection $computer -Quiet) {
-        Write-Host "$computer is pingable"
+        Write-Verbose "$computer is pingable"
         $comp = Get-WmiObject Win32_OperatingSystem -ComputerName $computer `
                                                     -Credential $cred
         Write-Verbose "Connecting via WMI to $computer"
