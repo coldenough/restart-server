@@ -28,7 +28,7 @@ function restart-server {
   }
   PROCESS {
     foreach ($computer in $computerName) {
-      if (Test-Path $computer) {
+      if (Ping-Host $computer) {
         Write-Host "$computer is pingable"
 <#        $comp = Get-WmiObject Win32_OperatingSystem -ComputerName $computer `
                                                     -Credential $cred
