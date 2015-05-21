@@ -1,6 +1,6 @@
 ﻿# Comment
 function restart-server {
-  [CmdletBinding() ]
+  [CmdletBinding()]
   param (
     [parameter (Mandatory=$true,
                 ValueFromPipeline=$true,
@@ -27,4 +27,4 @@ function restart-server {
   END{}
 } 
 
-Restart-Server
+Restart-Server -computerName nimbletest,pull01
