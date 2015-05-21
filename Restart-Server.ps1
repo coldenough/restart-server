@@ -8,11 +8,13 @@ function restart-server {
                 HelpMessage="Computer name to query via WMI") ]
     [string[]]$computerName= ""
   )
+  BEGIN {
+    $cred = Get-Credential  
+  }
   PROCESS {
-    $cred = Get-Credential
     $comp = Get-WmiObject Win32_OperatingSystem -ComputerName $computerName `
                                                 -Credential $cred
-    $ret = $comp. Reboot()
+    $ret = $comp.Reboot()
     if ($ret.ReturnValue -eq 0){
       Write-Host "Restarting $computerName succeeded."
     }
@@ -20,6 +22,7 @@ function restart-server {
       Write-Host "Restarting $computerName failed"
     }
   }
+  END{}
 } 
 
 Restart-Server
