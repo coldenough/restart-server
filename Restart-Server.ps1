@@ -27,8 +27,4 @@ function restart-server {
   END{}
 } 
 
-<<<<<<< HEAD
-Restart-Server -computerName
-=======
 Restart-Server -computerName nimbletest,pull01
->>>>>>> add-for-loop
