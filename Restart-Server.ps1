@@ -13,14 +13,14 @@ function restart-server {
   }
   PROCESS {
     foreach ($computer in $computerName) {
-      $comp = Get-WmiObject Win32_OperatingSystem -ComputerName $computerName `
+      $comp = Get-WmiObject Win32_OperatingSystem -ComputerName $computer `
                                                 -Credential $cred
       $ret = $comp.Reboot()
       if ($ret.ReturnValue -eq 0){
-        Write-Host "Restarting $computerName succeeded."
+        Write-Host "Restarting $computer succeeded."
       }
       else {
-      Write-Host "Restarting $computerName failed"
+      Write-Host "Restarting $computer failed"
       }
     }
   }
