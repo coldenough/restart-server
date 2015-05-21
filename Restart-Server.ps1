@@ -22,4 +22,4 @@ function restart-server {
   }
 } 
 
-Restart-Server
+Restart-Server -computerName
