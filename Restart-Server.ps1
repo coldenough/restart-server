@@ -17,6 +17,7 @@ function restart-server {
                 ValueFromPipeline=$true,
                 ValueFromPipelineByPropertyName =$true,
                 HelpMessage="Computer name to query via WMI") ]
+    [Alias('hostname')]
     [string[]]$computerName,
     [parameter()]
     [string]$ErrorLogFilePath = $ErrorLogPreference
