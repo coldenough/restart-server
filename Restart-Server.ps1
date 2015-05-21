@@ -1,11 +1,14 @@
-﻿function restart-server {
+﻿<#
+v.1.0
+#>
+function restart-server {
   [CmdletBinding()]
   param (
     [parameter (Mandatory=$true,
                 ValueFromPipeline=$true,
                 ValueFromPipelineByPropertyName =$true,
                 HelpMessage="Computer name to query via WMI") ]
-    [string[]]$computerName= ""
+    [string[]]$computerName
   )
   BEGIN {
     $cred = Get-Credential  
