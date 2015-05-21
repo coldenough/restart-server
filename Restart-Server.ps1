@@ -2,6 +2,8 @@
 v.1.0
 #>
 $ErrorLogPreference = 'c:\temp\Restart-Server-Log.txt'
+New-Item -Path $ErrorLogPreference -ItemType file -Verbose
+
 if (Test-Path $ErrorLogPreference) {
   Write-Output "$ErrorLogPreference file created"
 } else {
