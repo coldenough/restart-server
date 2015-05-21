@@ -36,11 +36,12 @@ function restart-server {
         Write-Host "Restarting $computer succeeded."
       }
       else {
-      Write-Host "Restarting $computer failed"
+        Write-Warning "Restarting $computer failed"
+        Write-Output "Restarting $computer failed" | Out-File $ErrorLogFilePath
       }
     }
   }
   END{}
 } 
 
-Restart-Server -computerName nimbletest,pull01 -Verbose
+Restart-Server -computerName nimbletest,pull01,noname -Verbose
