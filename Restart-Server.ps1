@@ -80,6 +80,6 @@ Param($roleName)
   $principal.IsInRole([Security.Principal.WindowsBuiltinRole]::$roleName)
 }
 
-Test-Isinrole -roleName "Administrator" 
-
-Restart-Server -computerName nimbletest,pull01,noname -Verbose
+if (Test-Isinrole -roleName "Administrator") {
+  Restart-Server -computerName nimbletest,pull01,noname -Verbose
+}
