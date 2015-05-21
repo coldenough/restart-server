@@ -14,6 +14,8 @@ if (Test-Path $ErrorLogPreference) {
 
 $DateShortFormat = Get-Date -Format g
 
+$serversToRestart = 'C:\Temp\ServerToRestart.txt'
+
 function restart-server {
   [CmdletBinding()]
   param (
@@ -81,7 +83,7 @@ Param($roleName)
 }
 
 if (Test-Isinrole -roleName "Administrator") {
-  Restart-Server -computerName
+  Get-Content $serversToRestart | Restart-Server -computerName
 } else {
   Write-Warning 'Only Administrators may run the script!'
 }
