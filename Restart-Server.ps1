@@ -28,18 +28,23 @@ function restart-server {
   }
   PROCESS {
     foreach ($computer in $computerName) {
-      $comp = Get-WmiObject Win32_OperatingSystem -ComputerName $computer `
-                                                -Credential $cred
-      Write-Verbose "Connecting via WMI to $computer"
-      $ret = $comp.Reboot()
-      Write-Verbose "Finished with $computer"
-      if ($ret.ReturnValue -eq 0){
-        Write-Host "Restarting $computer succeeded."
-      }
-      else {
-        Write-Warning "Restarting $computer failed"
-        Write-Output "Restarting $computer failed" | Out-File $ErrorLogFilePath
-      }
+#      if (Test-Path $computer) {
+        $comp = Get-WmiObject Win32_OperatingSystem -ComputerName $computer `
+                                                    -Credential $cred
+        Write-Verbose "Connecting via WMI to $computer"
+        $ret = $comp.Reboot()
+        Write-Verbose "Finished with $computer"
+        if ($ret.ReturnValue -eq 0){
+          Write-Host "Restarting $computer succeeded."
+        } else {
+          Write-Warning "Restarting $computer failed"
+          Write-Output "Restarting $computer failed" |
+              Out-File $ErrorLogFilePath
+         }
+#      } else {
+#        Write-Output "Computer $computer is unreachable" |
+#            Out-File $ErrorLogFilePath
+#      }
     }
   }
   END{}
