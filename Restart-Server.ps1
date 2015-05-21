@@ -12,7 +12,7 @@ function restart-server {
                 HelpMessage="Computer name to query via WMI") ]
     [string[]]$computerName,
     [parameter()]
-    [string]$ErrorLogFilePath = $DJErrorLogPreference
+    [string]$ErrorLogFilePath = $ErrorLogPreference
   )
   BEGIN {
     $cred = Get-Credential
