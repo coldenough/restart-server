@@ -2,12 +2,13 @@
 v.1.0
 #>
 $ErrorLogPreference = 'c:\temp\Restart-Server-Log.txt'
-New-Item -Path $ErrorLogPreference -ItemType file -Verbose
+New-Item -Path $ErrorLogPreference -ItemType file -Verbose -ErrorAction SilentlyContinue
 
 if (Test-Path $ErrorLogPreference) {
-  Write-Output "$ErrorLogPreference file created"
+  Clear-Content $ErrorLogPreference
 } else {
-  Write-Warning "$ErrorLogPreference was not created"
+  Write-Warning "$ErrorLogPreference does not exist"
+  exit
 }
 
 $DateShortFormat = Get-Date -Format g
