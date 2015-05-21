@@ -44,7 +44,7 @@ function restart-server {
           Write-Warning "Restarting $computer failed"
           Write-Output "Restarting $computer failed" |
               Out-File $ErrorLogFilePath
-         }
+        }
       } else {
         Write-Warning "Computer $computer is unreachable"
         Write-Output "$DateShortFormat - $computer is unreachable" |
@@ -81,7 +81,7 @@ Param($roleName)
 }
 
 if (Test-Isinrole -roleName "Administrator") {
-  Restart-Server -computerName nimbletest,pull01,noname -Verbose
+  Restart-Server -computerName
 } else {
   Write-Warning 'Only Administrators may run the script!'
 }
