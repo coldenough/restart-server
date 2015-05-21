@@ -1,6 +1,6 @@
 ﻿# Comment
 function restart-server {
-  [CmdletBinding() ]
+  [CmdletBinding()]
   param (
     [parameter (Mandatory=$true,
                 ValueFromPipeline=$true,
@@ -8,18 +8,27 @@ function restart-server {
                 HelpMessage="Computer name to query via WMI") ]
     [string[]]$computerName= ""
   )
+  BEGIN {
+    $cred = Get-Credential  
+  }
   PROCESS {
-    $cred = Get-Credential
-    $comp = Get-WmiObject Win32_OperatingSystem -ComputerName $computerName `
+    foreach ($computer in $computerName) {
+      $comp = Get-WmiObject Win32_OperatingSystem -ComputerName $computer `
                                                 -Credential $cred
-    $ret = $comp. Reboot()
-    if ($ret.ReturnValue -eq 0){
-      Write-Host "Restarting $computerName succeeded."
-    }
-    else {
-      Write-Host "Restarting $computerName failed"
+      $ret = $comp.Reboot()
+      if ($ret.ReturnValue -eq 0){
+        Write-Host "Restarting $computer succeeded."
+      }
+      else {
+      Write-Host "Restarting $computer failed"
+      }
     }
   }
+  END{}
 } 
 
+<<<<<<< HEAD
 Restart-Server -computerName
+=======
+Restart-Server -computerName nimbletest,pull01
+>>>>>>> add-for-loop
