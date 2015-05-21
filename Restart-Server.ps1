@@ -1,6 +1,8 @@
 ﻿<#
 v.1.0
 #>
+$ErrorLogPreference = 'c:\Restart-Server-Log.txt'
+
 function restart-server {
   [CmdletBinding()]
   param (
@@ -8,16 +10,21 @@ function restart-server {
                 ValueFromPipeline=$true,
                 ValueFromPipelineByPropertyName =$true,
                 HelpMessage="Computer name to query via WMI") ]
-    [string[]]$computerName
+    [string[]]$computerName,
+    [parameter()]
+    [string]$ErrorLogFilePath = $DJErrorLogPreference
   )
   BEGIN {
-    $cred = Get-Credential  
+    $cred = Get-Credential
+    del $ErrorLogFilePath -ErrorAction SilentlyContinue  
   }
   PROCESS {
     foreach ($computer in $computerName) {
       $comp = Get-WmiObject Win32_OperatingSystem -ComputerName $computer `
                                                 -Credential $cred
+      Write-Verbose "Connecting via WMI to $computer"
       $ret = $comp.Reboot()
+      Write-Verbose "Finished with $computer"
       if ($ret.ReturnValue -eq 0){
         Write-Host "Restarting $computer succeeded."
       }
