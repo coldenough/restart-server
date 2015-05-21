@@ -14,7 +14,7 @@ if (Test-Path $ErrorLogPreference) {
 
 $DateShortFormat = Get-Date -Format g
 
-$serversToRestart = 'C:\Temp\ServerToRestart.txt'
+$serversToRestart = 'C:\Temp\ServersToRestart.txt'
 
 function restart-server {
   [CmdletBinding()]
