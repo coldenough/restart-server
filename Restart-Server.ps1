@@ -83,7 +83,7 @@ Param($roleName)
 }
 
 if (Test-Isinrole -roleName "Administrator") {
-  Get-Content $serversToRestart | Restart-Server -computerName
+  Get-Content $serversToRestart | Restart-Server
 } else {
   Write-Warning 'Only Administrators may run the script!'
 }
