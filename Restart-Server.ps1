@@ -1,7 +1,7 @@
 ﻿<#
 v.1.0
 #>
-$ErrorLogPreference = 'c:\Restart-Server-Log.txt'
+$ErrorLogPreference = 'c:\temp\Restart-Server-Log.txt'
 if (Test-Path $ErrorLogPreference) {
   Write-Output "$ErrorLogPreference file created"
 } else {
