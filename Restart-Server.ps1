@@ -45,7 +45,7 @@ function restart-server {
       } else {
         Write-Warning "Computer $computer is unreachable"
         Write-Output "Computer $computer is unreachable" |
-            Out-File $ErrorLogFilePath
+            Out-File $ErrorLogFilePath -NoClobber
       }
     }
   }
