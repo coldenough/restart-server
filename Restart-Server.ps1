@@ -23,7 +23,7 @@ function restart-server {
   )
   BEGIN {
     $cred = Get-Credential
-    del $ErrorLogFilePath -ErrorAction SilentlyContinue  
+    #del $ErrorLogFilePath -ErrorAction SilentlyContinue  
   }
   PROCESS {
     foreach ($computer in $computerName) {
