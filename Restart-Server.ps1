@@ -29,7 +29,8 @@ function restart-server {
   PROCESS {
     foreach ($computer in $computerName) {
       if (Test-Path $computer) {
-        $comp = Get-WmiObject Win32_OperatingSystem -ComputerName $computer `
+        Write-Host "$computer is pingable"
+<#        $comp = Get-WmiObject Win32_OperatingSystem -ComputerName $computer `
                                                     -Credential $cred
         Write-Verbose "Connecting via WMI to $computer"
         $ret = $comp.Reboot()
@@ -41,6 +42,7 @@ function restart-server {
           Write-Output "Restarting $computer failed" |
               Out-File $ErrorLogFilePath
          }
+#>
       } else {
         Write-Output "Computer $computer is unreachable" |
             Out-File $ErrorLogFilePath
